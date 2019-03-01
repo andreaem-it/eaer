@@ -1,0 +1,39 @@
+{% extends 'FrontEnd/base.html.twig' %}
+{% block page_title %}EAER Project{% endblock %}
+
+{% block body %}
+    <div class="container" style="margin-bottom: 100px; margin-top: 100px">
+        <div class="row">
+            <div class="col-md-12">
+{#                <div class="row ">#}
+{#                    <div class="col-md-12">#}
+{#                        <section class="page" style="padding-bottom: 0!important;">#}
+{#                            <div class="white">#}
+{#                                <div class="container title">#}
+{#                                    <h1>{{ partner.0.title }}</h1>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </section>#}
+{#                    </div>#}
+{#                </div>#}
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <img src="{{ asset(partner.0.logo) }}" class="img-responsive">
+                    </div>
+                    <div class="col-md-4"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+
+                    </div>
+                    <div class="col-md-6">
+                        {{ partner.0.description|raw }}
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'FrontEnd/base.html.twig' %}
+{% block page_title %}EAER Project - Blog{% endblock %}
+
+{% block body %}
+    <div class="container" style="margin-bottom: 100px; margin-top: 100px">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="row ">
+                    <div class="col-md-12">
+                        <section class="page" style="padding-bottom: 0!important;">
+                            <div class="white">
+                                <div class="container title">
+                                    <h1>{{ post.0.title }}</h1>
+                                    <h4>Category: {{ post.0.category }}</h4>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <div class="row section" style="margin-bottom: 10px!important;">
+                    <div class="col-md-12">
+                        <img src="{{ asset(post.0.image) }}" class="img-responsive">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>{{ post.0.content|raw }}</h4>
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 25px">
+                    <div class="col-6">
+                        {% if previous != null %}
+                            <h4>
+                                <a class="pull-left" href="{{ url('blog_article', { 'id' : previous.id }) }}">< {{ previous.title }}</a>
+                            </h4>
+                        {% endif %}
+                    </div>
+                    <div class="col-6">
+                        {% if next != null %}
+                            <h4>
+                                <a class="pull-right" href="{{ url('blog_article', { 'id' : next.id }) }}">{{ next.title }} ></a>
+                            </h4>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <h3>Categories</h3>
+                <ul>
+                    {% for category in category_list %}
+                        <li><h4><a href="">{{ category.name }}</a></h4></li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

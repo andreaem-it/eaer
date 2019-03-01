@@ -1,0 +1,23 @@
+.spinner {
+	background: url("../images/ie-loader.gif");
+	width:48px;
+	height:48px;
+	border: none;
+}
+
+.services-box .icon-container{
+	border: none;
+}
+
+.icon-container h3{
+	position: static;
+		bottom: 0px;
+}
+
+.services-box .icon-container:hover{
+	border: none;
+}
+
+.services-box:hover .icon-container{
+	border: none;
+}

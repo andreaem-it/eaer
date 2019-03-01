@@ -1,0 +1,255 @@
+{% extends 'FrontEnd/base.html.twig' %}
+{% block page_title %}EAER Project{% endblock %}
+
+{% block body %}
+    <!-- CIRCLE GRID -->
+    <img src="{{ asset('images/header-pic-1.png') }}" style="width: 100%">
+
+    <section id="outputs" class="page pattern">
+        <div class="section white">
+            <div class="container title">
+                <h1>Outputs</h1>
+                <p>With the EAER project we will develop e number of outputs, including <span class="highlight">reports on best pratices</span><br />  for the employment of people in recovery, an <span class="highlight">e-learning platform</span>, newsletters, etc...</p>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 clearfix">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="services-box">
+                            <div class="icon-container"><div class="pictogram icon-pencil"></div></div>
+                            <div class="services-desc"><p>Sed euismod quam tellus, sed interdum mi venenatis at. Praesent laoreet ante eu lectus vulputate porta. Vivamus non elementum justo. Curabitur vitae facilisis justo. Aliquam vel libero ac metus fringilla dictum.</p></div>
+                            <h3>reports</h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="services-box">
+                            <div class="icon-container"><div class="pictogram icon-comments"></div></div>
+                            <div class="services-desc"><p>Sed euismod quam tellus, sed interdum mi venenatis at. Praesent laoreet ante eu lectus vulputate porta. Vivamus non elementum justo. Curabitur vitae facilisis justo. Aliquam vel libero ac metus fringilla dictum.</p></div>
+                            <h3>learn</h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="services-box">
+                            <div class="icon-container"><div class="pictogram icon-wrench"></div></div>
+                            <div class="services-desc"><p>Sed euismod quam tellus, sed interdum mi venenatis at. Praesent laoreet ante eu lectus vulputate porta. Vivamus non elementum justo. Curabitur vitae facilisis justo. Aliquam vel libero ac metus fringilla dictum.</p></div>
+                            <h3>quality</h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="services-box">
+                            <div class="icon-container"><div class="pictogram icon-beaker"></div></div>
+                            <div class="services-desc"><p>Sed euismod quam tellus, sed interdum mi venenatis at. Praesent laoreet ante eu lectus vulputate porta. Vivamus non elementum justo. Curabitur vitae facilisis justo. Aliquam vel libero ac metus fringilla dictum.</p></div>
+                            <h3>job opportunities</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 contact-button clearfix">
+                    <h2>Would you like to contribute to our project ?</h2>
+                    <a class="btn btn-primary btn-lg" href="#contact">Get in Touch</a>
+                </div>
+            </div><!-- end .row -->
+        </div><!-- end .container -->
+    </section><!-- end #services -->
+
+    <!-- PARALLAX -->
+
+{#    <section id="parallax-bg-2" class="parallax-board" data-speed="0" data-type="background"><div class="quote"><span class="rotate-fade">Don’t think about making art, just get it done.:Let everyone else decide if it’s good or bad, whether they love it or hate it.:While they are deciding, make even more art."</span><br /><div class="author">Andy Warhol</div></div></section>#}
+
+    <!-- FAVORITE -->
+
+    <section id="partners" class="page pattern">
+        <div class="section white">
+            <div class="container title">
+{#                <h1><span class="rotate-fade">FAVORITE: BEST: AWESOME</span> PHOTOS</h1>#}
+                <h1>PARTNERS</h1>
+                <p>The EAER Project is realized by four partner organizations from Scotland, Italy, Portugal and the Netherlands</p>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div id="favorite-carusel" class="owl-carousel jerro-carusel-theme">
+                        <div class="item">
+                            <a href="{{ url('partners', {'partner' : 'sdf'}) }}">
+                                <div class="circle-info" style="margin-left: 10px; width: 270px; height: 270px; background-color: #616f9b">Scottish Drug Forum</div>
+                                <img style="width: 270px;" src="{{ asset('images/partners/home/SDF.png') }}" alt="" />
+                            </a>
+                        </div>
+                        <div class="item">
+                            <a href="{{ url('partners', {'partner' : 'dfw2w'}) }}">
+                                <div class="circle-info"  style="margin-left: 10px; width: 270px; height: 270px; background-color: #616f9b">Dutch Foundation of Innovation</div>
+                                <img style="width: 270px;" src="{{ asset('images/partners/home/DFW2W.png') }}" alt="" />
+                            </a>
+                        </div>
+                        <div class="item">
+                            <a href="{{ url('partners', {'partner' : 'apdes'}) }}">
+                                <div class="circle-info" style="margin-left: 10px; width: 270px; height: 270px; background-color: #616f9b">APDES</div>
+                                <img style="width: 270px;" src="{{ asset('images/partners/home/APDES.png') }}" alt="" />
+                            </a>
+                        </div>
+                        <div class="item">
+                            <a href="{{ url('partners', {'partner' : 'la-tenda'}) }}">
+                                <div class="circle-info" style="margin-left: 10px; width: 270px; height: 270px; background-color: #616f9b">La Tenda</div>
+                                <img style="width: 270px;" src="{{ asset('images/partners/home/LT.png') }}" alt="" />
+                            </a>
+                        </div>
+                    </div><!-- end #favorite-carusel -->
+                </div><!-- end .col-lg-12 -->
+            </div><!-- end .row -->
+        </div><!-- end .container -->
+    </section><!-- end #favorite -->
+
+    <!-- SKILLS -->
+
+    <section id="learn" class="page pattern">
+        <div class="section white">
+            <div class="container title">
+                <h1>LEARN</h1>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 clearfix">
+                    <h2>Our eLearning platform offers an  <span class="highlight">interactive, multilingual and comprensive</span> learning enviroment<br> for social workers and clients in recovery who want <span class="hightlit">improve their skills for emplyability</span></h2>
+                    <a class="btn btn-primary btn-lg" href="#">Go to the platform</a>
+                </div>
+            </div><!-- end .row -->
+        </div><!-- end .container -->
+    </section><!-- end #skills -->
+
+    <!-- TWITTER FEED -->
+
+    <section id="people" class="page pattern">
+        <div class="section white">
+            <div class="container title">
+                <h1>Testimonials</h1>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div id="entries-carusel" class="owl-carousel jerro-carusel-theme"></div>
+                </div>
+            </div><!-- end .row -->
+        </div><!-- end .container -->
+    </section><!-- end #people -->
+
+    <!-- BLOG -->
+
+    <section id="blog" class="page pattern">
+        <div class="section white">
+            <div class="container title">
+                <h1>News</h1>
+                <p>Recent posts, <span class="highlight">consectetur</span> adipiscing elit. Donec tincidunt <br /> <span class="highlight">enim</span> in purus dictum, eget lacinia tortor <span class="highlight">convallis</span>.</p>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    {% for post in post_list %}
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                            <div class="quick-post">
+                                <div class="date"><span class="day">{{ post.datetime|date("d") }}</span><span>{{ post.datetime|date("M Y") }}</span></div>
+                                <h2><a href="{{ url('blog_article', {'year' : post.datetime|date("Y"), 'month' : post.datetime|date("m") ,'slug' : post.slug }) }}" data-toggle="modal" data-target="#myModal">{{ post.title|truncate(20) }}</a></h2>
+                                <div class="category">{{ post.category }}</div>
+                                <a href="{{ url('blog_article', {'year' : post.datetime|date("Y"), 'month' : post.datetime|date("m") ,'slug' : post.slug }) }}">
+                                    <div class="img">
+                                        <div class="post-info" style="height: 300px; width: 300px; margin-left: 30px;">
+                                            <p style="margin-top: 30%">
+                                                {{ post.content|truncate(100)|raw }}
+                                            </p>
+                                        </div>
+                                        <img src="{{ asset(post.image) | imagine_filter('my_thumb', {"thumbnail": {"size": [300, 300] }}) }}">
+                                    </div>
+                                </a>
+                            </div><!-- end .quick-post -->
+                        </div>
+                    {% endfor %}
+                </div><!-- end .col-lg-12 -->
+            </div><!-- end .row -->
+            <br><br>
+            <div class="row mt-3 text-center">
+                <a class="btn btn-primary btn-lg" href="{{ url('blog') }}">Go to the blog</a>
+            </div>
+        </div><!-- end .container -->
+    </section><!-- end #blog -->
+
+
+    <!--<section id="portfolio-square" class="page pattern">
+        <div class="section white">
+            <div class="container title">
+                <h1>EVENTS</h1>
+            </div>
+        </div>
+        <div class="wide">
+            <ul class="portfolio-navigation-1">
+                <li data-filter="all" data-role="button" class="button filter-1 anim150 active">All</li>
+                <li data-filter="meetings" data-tole="button" class="button filter-1 anim150">MEETINGS</li>
+                <li data-filter="eaer-days" class="button filter-1 anim150">EAER DAYS</li>
+                <li data-filter="multipler-events" class="button filter-1 anim150">MULTIPLER EVENTS</li>
+                <li data-filter="other" class="button filter-1 anim150">OTHER</li>
+                <li class="break"></li>
+            </ul>
+            <ul id="portfolio-grid-1">
+                <li class="mix-1 women"><a href="images/640x640.jpg" title="This is an image title" data-lightbox-gallery="portfolio"><img src="http://placehold.it/270x270" alt=""  /></a><p>Lorem ipsum dolor sit amet</p></li>
+                <li class="mix-1 men"><a href="images/640x640.jpg" title="This is an image title" data-lightbox-gallery="portfolio"><img src="http://placehold.it/270x270" alt="" /></a><p>Lorem ipsum dolor sit amet</p></li>
+                <li class="mix-1 groups"><a href="images/640x640.jpg" title="This is an image title" data-lightbox-gallery="portfolio"><img src="http://placehold.it/270x270" alt="" /></a><p>Lorem ipsum dolor sit amet</p></li>
+                <li class="mix-1 family"><a href="images/640x640.jpg" title="This is an image title" data-lightbox-gallery="portfolio"><img src="http://placehold.it/270x270" alt="" /></a><p>Lorem ipsum dolor sit amet</p></li>
+                <li class="mix-1 groups"><a href="images/640x640.jpg" title="This is an image title" data-lightbox-gallery="portfolio"><img src="http://placehold.it/270x270" alt="" /></a><p>Lorem ipsum dolor sit amet</p></li>
+                <li class="mix-1 men"><a href="images/640x640.jpg" title="This is an image title" data-lightbox-gallery="portfolio"><img src="http://placehold.it/270x270" alt="" /></a><p>Lorem ipsum dolor sit amet</p></li>
+                <li class="mix-1 women"><a href="images/640x640.jpg" title="This is an image title" data-lightbox-gallery="portfolio"><img src="http://placehold.it/270x270" alt="" /></a><p>Lorem ipsum dolor sit amet</p></li>
+                <li class="mix-1 men"><a href="images/640x640.jpg" title="This is an image title" data-lightbox-gallery="portfolio"><img src="http://placehold.it/270x270" alt="" /></a><p>Lorem ipsum dolor sit amet</p></li>
+                <li class="mix-1 groups"><a href="images/640x640.jpg" title="This is an image title" data-lightbox-gallery="portfolio"><img src="http://placehold.it/270x270" alt="" /></a><p>Lorem ipsum dolor sit amet</p></li>
+                <li class="mix-1 women"><a href="images/640x640.jpg" title="This is an image title" data-lightbox-gallery="portfolio"><img src="http://placehold.it/270x270" alt="" /></a><p>Lorem ipsum dolor sit amet</p></li>
+            </ul>
+        </div>
+    </section> -->
+
+    <!-- CONTACT -->
+
+    <section id="contact" class="page pattern">
+        <div class="section white">
+            <div class="container title">
+                <h1>CONTACT</h1>
+            </div>
+        </div>
+        <div class="wide">
+            <div id="jerro-map-canvas"></div>
+            <ul class="map-navigation">
+                <li data-lat="-37.8182" data-lng="144.964984" class="address-button active">SCOTLAND</li>
+                <li data-lat="-37.81887" data-lng="144.95874" class="address-button">ITALY</li>
+                <li data-lat="-37.819718" data-lng="144.972119" class="address-button">NETHERLANDS</li>
+                <li data-lat="-37.819718" data-lng="144.972119" class="address-button">PORTOUGAL</li>
+            </ul><!-- end .map-navigation -->
+        </div><!-- end .wide -->
+        <div class="container">
+            <div id="jerro-contact-form">
+                <form action="index.php" method="post" id="contact_form">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div id="formFirstName"><input type="text" name="fname" id="fname" placeholder="First name"></div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div id="formLastName"><input type="text" name="lname" id="lname" placeholder="Last name"></div>
+                        </div>
+                    </div><!-- end .row -->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div id="formEmail"><input type="text" name="email" id="email" placeholder="Email address"></div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div id="formSubject"><input type="text" name="subject" id="subject" placeholder="Subject"></div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div id="formMessage"><textarea name="message" id="message" placeholder="Message"></textarea></div>
+                        </div>
+                    </div><!-- end .row -->
+                    <button type="submit" id="send_message" class="btn btn-primary btn-lg">Send message</button>
+                </form><!-- end #contact_form -->
+                <div id="mail_success" class="success-text"><i class="icon-ok"></i> Thank you. We will get in touch with you shortly.</div>
+                <div id="mail_fail" class="error-text"><i class="icon-remove"></i> Sorry, don't know what happened. Try later.</div>
+            </div><!-- end #jerro-contact-form -->
+        </div><!-- end .container -->
+    </section><!-- end #contact -->
+{% endblock %}

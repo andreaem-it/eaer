@@ -1,0 +1,26 @@
+<section id="main-navigation" class="page white">
+    <div class="wide">
+
+        <!-- mobile menu -->
+        <div class="toggle-button">
+            <div class="toggle-navigation clearfix" id="menu-toggle">
+                <div class="toggle-part"></div>
+                <div class="toggle-part"></div>
+                <div class="toggle-part"></div>
+            </div><!-- end .toggle-navigation -->
+        </div><!-- end .toggle-button -->
+
+        <nav id="navigation">
+            <ul id="main-menu" class="nav">
+                <li><a href="#header">Home</a></li>
+                {% for item in items %}
+                    <li>
+                        <a href="{{ app.request.schemeAndHttpHost ~ item.url }}">{{ item.name }}</a>
+                    </li>
+                {% endfor %}
+            </ul><!-- end #main-menu -->
+        </nav><!-- end #navigation -->
+
+    </div><!-- end .wide -->
+</section><!-- end #main-navigation -->
+
