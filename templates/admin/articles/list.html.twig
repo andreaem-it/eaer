@@ -1,0 +1,35 @@
+{% extends '@AdminLTE/layout/default-layout.html.twig' %}
+
+{% block title %}EAER Admin{% endblock %}
+
+{% block page_title %}Articles{% endblock %}
+{% block page_subtitle %}List{% endblock %}
+
+{% block page_content %}
+    <div class="container-fluid">
+        <div class="col-md-12">
+            <div class="panel">
+                <div class="panel-body">
+                    <table class="table table-responsive table-hover">
+                        <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Title</th>
+                            <th>Category</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for item in posts %}
+                            <tr>
+                                <td>{{ item.datetime|date("m-d-Y") }}</td>
+                                <td>{{ item.title }}</td>
+                                <td>{{ item.category }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -8,6 +8,8 @@
         "doctrine/doctrine-migrations-bundle": "^2.0",
         "doctrine/orm": "^2.6",
         "friendsofsymfony/rest-bundle": "^2.5",
+        "friendsofsymfony/user-bundle": "~2.0",
+        "kevinpapst/adminlte-bundle": "^2.0",
         "liip/imagine-bundle": "^2.1",
         "nelmio/api-doc-bundle": "^3.3",
         "sensio/framework-extra-bundle": "^5.2",
@@ -68,7 +70,7 @@
     },
     "extra": {
         "symfony": {
-            "allow-contrib": false,
+            "allow-contrib": "true",
             "require": "4.2.*"
         }
     },
