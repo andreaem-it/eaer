@@ -374,27 +374,27 @@ $('#jerro-map-canvas').gmap3({
 	map: {
 		options: {
 			center: startPosition,
-			zoom: 16,
+			zoom: 5,
 			scrollwheel: false,
 		}
 	},
-	marker: {
-		values: [{
-					latLng: [-37.8182,144.964984],
-					options: {  icon: 'images/marker_2.png' },
-					data:'Here is my workshop'
-				}, {
-					latLng: [-37.81887,144.95874],
-					options: {  icon: 'images/marker_1.png' },
-					data:'Here is my office'
-				}, {
-					latLng: [-37.819718,144.972119],
-					options: {  icon: 'images/marker_3.png' },
-					data:'Here you can relax and find inspiration'
-				}],
-		options: {
-			draggable: false,
-		},
+	// marker: {
+	// 	// values: [{
+	// 	// 			latLng: [-37.8182,144.964984],
+	// 	// 			options: {  icon: 'images/marker_2.png' },
+	// 	// 			data:'Here is my workshop'
+	// 	// 		}, {
+	// 	// 			latLng: [-37.81887,144.95874],
+	// 	// 			options: {  icon: 'images/marker_1.png' },
+	// 	// 			data:'Here is my office'
+	// 	// 		}, {
+	// 	// 			latLng: [-37.819718,144.972119],
+	// 	// 			options: {  icon: 'images/marker_3.png' },
+	// 	// 			data:'Here you can relax and find inspiration'
+	// 	// 		}],
+	// 	// options: {
+	// 	// 	draggable: false,
+	// 	 },
 		events:{
 			mouseover: function(marker, event, context){
 			var map = $(this).gmap3("get"),
@@ -418,8 +418,8 @@ $('#jerro-map-canvas').gmap3({
 				}
 			}
 		}
-	}
-});
+	});
+// });
 
 /*
 ------------------------------------------------
