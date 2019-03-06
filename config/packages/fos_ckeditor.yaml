@@ -1,0 +1,16 @@
+# Read the documentation: https://symfony.com/doc/current/bundles/FOSCKEditorBundle/index.html
+
+twig:
+    form_themes:
+        - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
+fos_ck_editor:
+    configs:
+        my_config:
+            toolbar: standard
+        toolbars:
+            items:
+                full.clipboard: ["clipboard", "undo"]
+                full.editing: ["find", "selection", "spellchecker", "editing"]
+                full.forms: ["forms"]
+                full.colors: [ "TextColor", "BGColor" ]
+                full.document: [ "Source", "-", "Preview", "Print" ]

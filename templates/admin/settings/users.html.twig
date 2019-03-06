@@ -1,0 +1,53 @@
+{% extends 'admin/dashboard/index.html.twig' %}
+
+{% block title %}EAER Admin{% endblock %}
+
+{% block page_title %}Settings{% endblock %}
+{% block page_subtitle %}Users{% endblock %}
+
+{% block page_content %}
+    {% block breadcrumb %}{% endblock %}
+    <div class="container-fluid">
+        <div class="col-md-8">
+            <div class="panel">
+                <div class="panel-body">
+                    <table class="table table-responsive table-hover">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Last Access</th>
+                            <th>Active</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for item in items %}
+                            {% set active = 1 %}
+                            <tr>
+                                <td>{{ item.id }}</td>
+                                <td>{{ item.username }}</td>
+                                <td>{{ item.lastLogin|date("m-d-Y h:i") }}</td>
+                                <td>
+                                    {% if item.enabled == 1 %}
+                                        <div class="label label-success">Active</div>
+                                    {% else %}
+                                        <div class="label label-warning">Disabled</div>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel">
+                <div class="panel-body">
+{#                    {{ form_start(form) }}#}
+{#                    {{ form_end(form) }}#}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'admin/dashboard/index.html.twig' %}
+
+{% block title %}EAER Admin{% endblock %}
+
+{% block page_title %}Aspect{% endblock %}
+{% block page_subtitle %}Menu{% endblock %}
+
+{% block page_content %}
+    {% block breadcrumb %}{% endblock %}
+    <div class="container-fluid">
+        <div class="col-md-8">
+            <div class="panel">
+                <div class="panel-body">
+                    <table class="table table-responsive table-hover">
+                        <thead>
+                            <tr>
+                                <th>Position</th>
+                                <th>Title</th>
+                                <th>URL</th>
+                                <th>Active</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in items %}
+                                <tr>
+                                    <td>{{ item.position }}</td>
+                                    <td>{{ item.name }}</td>
+                                    <td>{{ item.url }}</td>
+                                    <td>
+                                        {% if item.active == 1 %}
+                                            <div class="label label-success">Active</div>
+                                        {% else %}
+                                            <div class="label label-warning">Hidden</div>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel">
+                <div class="panel-body">
+                    {{ form_start(form) }}
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

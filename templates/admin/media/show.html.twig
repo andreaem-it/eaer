@@ -1,0 +1,55 @@
+{% extends 'admin/dashboard/index.html.twig' %}
+
+{% block title %}EAER Admin{% endblock %}
+
+{% block page_title %}Media{% endblock %}
+{% block page_subtitle %}Details{% endblock %}
+
+{% block page_content %}
+    {% block breadcrumb %}{% endblock %}
+    <div class="container-fluid">
+        <div class="col-md-12">
+            <div class="panel">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-12 margin-bottom">
+                            {{ filename }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="panel">
+                                <div class="panel-body no-padding">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <img style="width: 100%;" class="" src="{{ asset('media/' ~ filename ) }}">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <ul class="list-group">
+                                                <li class="list-group-item">
+                                                    <strong>FileName:</strong> {{ filename }}
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <strong>FIleSize:</strong> {{ filesize|number_format }} B
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <strong>FileType:</strong> image/jpg
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <strong>FilePath:</strong>
+                                                    <a href="http://{{ app.request.host }}:{{ app.request.port }}/media/{{ filename }}" target="_blank">
+                                                        http://{{ app.request.host }}:{{ app.request.port }}/media/{{ filename }}
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

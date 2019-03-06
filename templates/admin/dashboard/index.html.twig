@@ -1,0 +1,48 @@
+{% extends '@!AdminLTE/layout/default-layout.html.twig' %}
+
+{% block title %}EAER Admin{% endblock %}
+
+{% block page_title %}Dashboard{% endblock %}
+{% block page_subtitle %}{% endblock %}
+{% block logo_path %}{{ url('admin') }}{% endblock %}
+{% block logo_large %}<img class="img-responsive" style="max-height: 50px" src="{{ asset('images/logo.png') }}">{% endblock %}
+{% block logo_mini %}EAER{% endblock %}
+
+{% block page_content %}
+    <div class="content">
+        <div class="row">
+            <div class="col-sm-3">
+                {% embed '@AdminLTE/Widgets/infobox-widget.html.twig'  with {
+                    'color' : 'aqua',
+                    'icon'  : 'fa fa-newspaper',
+                }%}
+                    {% block box_text %}
+                        <h5>Articles</h5>
+                    {% endblock %}
+                    {% block box_number %}
+                        1
+                    {% endblock %}
+                    {% block progress_description %}
+                        Published
+                    {% endblock %}
+                {% endembed %}
+            </div>
+            <div class="col-sm-3">
+                {% embed '@AdminLTE/Widgets/infobox-widget.html.twig'  with {
+                    'color' : 'blue',
+                    'icon'  : 'fa fa-comments',
+                }%}
+                    {% block box_text %}
+                        <h5>Comments</h5>
+                    {% endblock %}
+                    {% block box_number %}
+                        0
+                    {% endblock %}
+                    {% block progress_description %}
+                        To be moderated
+                    {% endblock %}
+                {% endembed %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

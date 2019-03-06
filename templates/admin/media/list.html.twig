@@ -1,0 +1,39 @@
+{% extends 'admin/dashboard/index.html.twig' %}
+
+{% block title %}EAER Admin{% endblock %}
+
+{% block page_title %}Media{% endblock %}
+{% block page_subtitle %}List{% endblock %}
+
+{% block page_content %}
+    {% block breadcrumb %}{% endblock %}
+    <div class="container-fluid">
+        <div class="col-md-12">
+            <div class="panel">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-12 margin-bottom">
+                            Showing {{ count }} files.
+                        </div>
+                    </div>
+                    <div class="row">
+                        {% for file in media %}
+                            <div class="col-sm-2">
+                                <div class="panel">
+                                    <div class="panel-body no-padding">
+                                        <a href="{{ url('admin_media_show', {'filename': file.filename}) }}">
+                                            <img class="img-responsive" src="../{{ f.cleanDir(file) }}">
+                                        </a>
+                                    </div>
+                                    <div class="panel-footer">
+                                        {{ file.filename }}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

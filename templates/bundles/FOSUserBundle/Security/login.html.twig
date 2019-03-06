@@ -1,0 +1,4 @@
+{#{% extends "@!FOSUser/Security/login.html.twig" %}#}
+{% extends '@AdminLTE/FOSUserBundle/Security/login.html.twig' %}
+{% block logo_login %}<img src="{{ asset('images/logo.png') }}" style="width: 300px">{% endblock %}
+{% trans_default_domain 'FOSUserBundle' %}

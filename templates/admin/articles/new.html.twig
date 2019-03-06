@@ -1,0 +1,82 @@
+{% extends 'admin/dashboard/index.html.twig' %}
+
+{% block title %}EAER Admin{% endblock %}
+
+{% block page_title %}Articles{% endblock %}
+{% block page_subtitle %}{{ page_title }}{% endblock %}
+
+{% block page_content %}
+    {% block breadcrumb %}{% endblock %}
+    <div class="container-fluid">
+        <div class="row">
+            {{ form_start(form) }}
+            <div class="col-md-8">
+                <div class="panel">
+                    <div class="panel-body">
+                        {{ form_widget(form.title) }}
+                        <br>
+                        {{ form_widget(form.content) }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel">
+                    <div class="panel-body">
+                        {{ form_widget(form.submit) }}
+                        {% if page_title == "Edit" %}
+                            <a href="{{ url('admin_articles_delete', {'id': id}) }}" class="btn btn-danger btn-block">Delete</a>
+                        {% endif %}
+                        <br>
+                        {{ form_label(form.datetime) }}
+                        {{ form_widget(form.datetime) }}
+                        <br>
+                        {{ form_label(form.category) }}
+                        {{ form_widget(form.category) }}
+                        <br>
+                        {{ form_label(form.image) }}
+                        {{ form_widget(form.image) }}
+                        <br>
+                    </div>
+                </div>
+            </div>
+            {{ form_end(form) }}
+        </div>
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".datetimepicker").datetimepicker({ format : "YYYY-MM-DDTHH:mm" });
+            $(".datetimepicker").val(new Date().toISOString());
+        });
+
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
+{% endblock %}
+{% block javascripts %}
+    <script>
+        CKEDITOR.editorConfig = function( config )
+        {
+            config.height = '600px';
+            config.toolbarGroups = [
+                { name: 'clipboard', groups: [ 'clipboard', 'undo' ] },
+                { name: 'editing', groups: [ 'find', 'selection', 'spellchecker', 'editing' ] },
+                { name: 'forms', groups: [ 'forms' ] },
+                { name: 'links', groups: [ 'links' ] },
+                { name: 'insert', groups: [ 'insert' ] },
+                { name: 'document', groups: [ 'document', 'doctools', 'mode' ] },
+                { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+                { name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi', 'paragraph' ] },
+                { name: 'styles', groups: [ 'styles' ] },
+                { name: 'colors', groups: [ 'colors' ] },
+                { name: 'tools', groups: [ 'tools' ] },
+                { name: 'others', groups: [ 'others' ] },
+                { name: 'about', groups: [ 'about' ] }
+            ];
+
+            config.removeButtons = 'Save,NewPage,Preview,Print,Templates,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,Flash,Iframe,About,BidiLtr,BidiRtl,CreateDiv,Blockquote,PageBreak,Anchor,SelectAll';
+        };
+    </script>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'admin/dashboard/index.html.twig' %}
+
+{% block title %}EAER Admin{% endblock %}
+
+{% block page_title %}Articles{% endblock %}
+{% block page_subtitle %}Delete{% endblock %}
+
+{% block page_content %}
+    {% block breadcrumb %}{% endblock %}
+    <div class="container-fluid">
+        <div class="col-md-12">
+            <div class="panel">
+                <div class="panel-body">
+                    <h3>Are you sure to delete article named "{{ article.title }}" ?</h3>
+                    <a href="{{ url('admin_articles_delete_confirm', {'id': article.id}) }}" class="btn btn-danger">DELETE</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

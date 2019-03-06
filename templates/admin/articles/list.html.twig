@@ -1,0 +1,43 @@
+{% extends 'admin/dashboard/index.html.twig' %}
+
+{% block title %}EAER Admin{% endblock %}
+
+{% block page_title %}Articles{% endblock %}
+{% block page_subtitle %}List{% endblock %}
+
+{% block page_content %}
+    {% block breadcrumb %}{% endblock %}
+    <div class="container-fluid">
+        <div class="col-md-12">
+            <div class="panel">
+                <div class="panel-body">
+                    <table class="table table-responsive table-hover">
+                        <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Title</th>
+                            <th>Category</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for item in posts %}
+                            <tr>
+                                <td style="vertical-align: middle;">{{ item.datetime|date("m-d-Y") }}</td>
+                                <td style="vertical-align: middle;"><a href="{{ url('admin_articles_edit', {'id': item.id}) }}">{{ item.title }}</a></td>
+                                <td style="vertical-align: middle;">{{ item.category }}</td>
+                                <td style="vertical-align: middle;"><i class="label label-success">Published</i></td>
+                                <td>
+                                    <a href="{{ url('admin_articles_edit', {'id': item.id }) }}" class="btn btn-small btn-primary"><i class="fa fa-edit"></i></a>
+                                    <a href="{{ url('admin_articles_delete', {'id': item.id }) }}" class="btn btn-small btn-danger"><i class="fa fa-trash"></i></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
