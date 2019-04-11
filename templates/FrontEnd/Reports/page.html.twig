@@ -1,0 +1,99 @@
+{% extends 'FrontEnd/base.html.twig' %}
+{% block page_title %}EAER Project{% endblock %}
+
+{% block body %}
+    <div class="container" style="margin-bottom: 100px; margin-top: 100px">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row ">
+                    <div class="col-md-12">
+                        <div class="float-left">
+                            <a href="" onclick="window.history.go(-1); return false;" style="font-size: 20px">
+                                Go back
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <img src="{{ asset(partner.logo) }}" class="img-responsive margin-bottom">
+                        <br><br>
+                    </div>
+                    <div class="col-md-4"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div id="wowslider-container1">
+                            <div class="ws_images"><ul>
+                                    <li>
+                                        <a>
+                                            <img src="{{ asset('partners/' ~ partner.name ~ '/' ~ partner.images.0) }}" alt="jquery slideshow"  id="wows1_0"/>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <link href="{{ asset('js/slider/style.css') }}" rel="stylesheet">
+                        <script type="text/javascript" src="{{ asset('js/custom/jquery-1.8.3.min.js') }}"></script>
+                        <script type="text/javascript" src="{{ asset('js/slider/wowslider.js') }}"></script>
+                        <script type="text/javascript" src="{{ asset('js/slider/script.js') }}"></script>
+                        {% set images = ['1.jpg','2.jpg','3.jpg','4.jpg','5.jpg','6.jpg','7.jpg','8.jpg','9.jpg'] %}
+                        <script>
+                            jQuery("#wowslider-container1")
+                                .wowSlider({
+                                    effect:"kenburns",
+                                    prev:"",
+                                    next:"",
+                                    width: $('col-md-6').width(),
+                                    heght: $('partner-desc').height(),
+                                    duration:20*100,
+                                    delay:20*100,
+                                    autoPlay:true,
+                                    autoPlayVideo:false,
+                                    playPause:false,
+                                    stopOnHover:true,
+                                    loop:true,
+                                    bullets:0,
+                                    caption:false,
+                                    captionEffect:"parallax",
+                                    controls:false,
+                                    controlsThumb:false,
+                                    responsive:3,
+                                    fullScreen:false,
+                                    gestures:1,
+                                    onBeforeStep:0,
+                                    images:[
+                                        {% for image in partner.images %}
+                                        { src: "{{ asset('partners/' ~ partner.name ~ '/' ~ image) }}" },
+                                        {% endfor %}
+                                    ]
+                                });
+                        </script>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="partner-desc">{{ partner.description|raw }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+{#                        {% if partner.id == 1 %}#}
+{#                        {% elseif partner.id == 2 %}#}
+{#                            <a href="{{ url('partners') }}"#}
+{#                        {% elseif partner.id == 3 %}#}
+{#                        {% elseif partner.id == 4 %}#}
+                    </div>
+                    <div class="col-6">
+                        <a href=""></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <style>
+        .partner-desc {
+            font-size: 18px;
+        }
+    </style>
+{% endblock %}

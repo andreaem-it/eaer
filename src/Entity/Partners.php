@@ -36,6 +36,11 @@ class Partners
      */
     private $name;
 
+    /**
+     * @ORM\Column(type="simple_array", nullable=true)
+     */
+    private $images = [];
+
     public function getId(): ?int
     {
         return $this->id;
@@ -85,6 +90,18 @@ class Partners
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getImages(): ?array
+    {
+        return $this->images;
+    }
+
+    public function setImages(?array $images): self
+    {
+        $this->images = $images;
 
         return $this;
     }

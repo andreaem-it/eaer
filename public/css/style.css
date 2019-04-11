@@ -7888,9 +7888,9 @@ MAIN NAVIGATION
   margin-top: 0px !important;
 }
 @media (max-width: 768px) {
-  .sticky-wrapper {
+  /*.sticky-wrapper {
     height: 100% !important;
-  }
+  }*/
 }
 #main-navigation {
   background: #FFF;
@@ -9449,16 +9449,18 @@ CONTACT ELEMENTS
 #jerro-contact-form textarea,
 #jerro-contact-form input {
   width: 100%;
-  padding: 10px 0;
-  margin-bottom: 40px;
-  border: none;
-  border-bottom: 1px solid #4d4d4d;
-  background: transparent;
-  clear: both;
-  font-size: 24px;
-  text-transform: uppercase;
-  font-weight: 500;
-  color: #222222;
+  padding: 10px 0!important;
+  margin-bottom: 40px!important;
+  border: none!important;
+  border-bottom: 1px solid #4d4d4d!important;
+  background: transparent!important;
+  clear: both!important;
+  font-size: 24px!important;
+  text-transform: uppercase!important;
+  font-weight: 500!important;
+  color: #222222!important;
+  border-radius: 0!important;
+  box-shadow: none!important;
 }
 #jerro-contact-form .error ::-webkit-input-placeholder {
   color: #ca2e2e !important;

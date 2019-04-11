@@ -1,0 +1,33 @@
+{% extends 'admin/dashboard/index.html.twig' %}
+
+{% block title %}EAER Admin{% endblock %}
+
+{% block page_title %}Settings{% endblock %}
+{% block page_subtitle %}System{% endblock %}
+
+{% block page_content %}
+    {% block breadcrumb %}{% endblock %}
+    <div class="container-fluid">
+        <div class="col-md-6">
+            <div class="panel">
+                <div class="panel-body">
+                    <h3 class="panel-title">
+                        System Informations
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel">
+                <div class="panel-body">
+                    <h3 class="panel-title">
+                        System Actions
+                    </h3>
+                    <br>
+                    <p><a href="{{ url('admin_settings_system_clear_cache') }}" class="btn btn-danger">Clear Production Cache</a></p>
+                    <p>Cache Dir: {{ cacheDir }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

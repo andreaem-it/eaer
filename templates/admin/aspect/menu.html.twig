@@ -14,10 +14,11 @@
                     <table class="table table-responsive table-hover">
                         <thead>
                             <tr>
-                                <th>Position</th>
+                                <th class="th-sm">Position</th>
                                 <th>Title</th>
                                 <th>URL</th>
-                                <th>Active</th>
+                                <th class="th-sm">Status</th>
+                                <th class="options"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -32,6 +33,15 @@
                                         {% else %}
                                             <div class="label label-warning">Hidden</div>
                                         {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if item.active == 1 %}
+                                            <a class="btn btn-sm btn-warning" href="{{ url('admin_aspect_menu_action_hide', {'id': item.id}) }}"><i class="fa fa-minus-circle"></i></a>
+                                        {% else %}
+                                            <a class="btn btn-sm btn-success" href="{{ url('admin_aspect_menu_action_unhide', {'id': item.id}) }}"><i class="fa fa-check-circle"></i></a>
+                                        {% endif %}
+                                        <a class="btn btn-sm btn-primary" href="{{ url('admin_aspect_menu_edit', {'id': item.id}) }}"><i class="fa fa-edit"></i></a>
+                                        <a class="btn btn-sm btn-danger" href=""><i class="fa fa-times-circle"></i></a>
                                     </td>
                                 </tr>
                             {% endfor %}
@@ -49,4 +59,15 @@
             </div>
         </div>
     </div>
+    <style>
+        td {
+            vertical-align: middle!important;
+        }
+        .options {
+            width: 150px;
+        }
+        .th-sm {
+            width: 80px;
+        }
+    </style>
 {% endblock %}

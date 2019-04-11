@@ -13,8 +13,9 @@ class PartnersController extends AbstractController
      */
     public function index($partner)
     {
+        $partners = $this->getDoctrine()->getRepository(Partners::class)->findOneBy(['name' => $partner]);
         return $this->render('FrontEnd/Partners/page.html.twig', [
-            'partner' => $this->getDoctrine()->getRepository(Partners::class)->findBy(['name' => $partner])
+            'partner' => $partners,
         ]);
     }
 }

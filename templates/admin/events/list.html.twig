@@ -1,0 +1,92 @@
+{% extends 'admin/dashboard/index.html.twig' %}
+
+{% block title %}EAER Admin{% endblock %}
+
+{% block page_title %}Events{% endblock %}
+{% block page_subtitle %}List{% endblock %}
+
+{% block page_content %}
+    {% block breadcrumb %}{% endblock %}
+    <div class="container-fluid">
+        <div class="col-md-8">
+            <div class="panel">
+                <div class="panel-body">
+                    <table class="table table-responsive table-hover">
+                        <thead>
+                        <tr>
+                            <th>Location</th>
+                            <th>Date Start</th>
+                            <th>Date End</th>
+                            <th>Pics</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for item in items %}
+                            <tr>
+                                <td style="vertical-align: middle;">{{ item.id }}</td>
+                                <td style="vertical-align: middle;">{{ item.startDate|date("d-m-Y") }}</td>
+                                <td style="vertical-align: middle;">{{ item.endDate|date("d-m-Y") }}</td>
+                                <td style="vertical-align: middle;">{{ item.pictures }}</td>
+                                <td style="vertical-align: middle;">
+                                    <a href="{{ url('admin_aspect_slider_edit', {'id': item.id}) }}" class="btn btn-small btn-primary"><i class="fa fa-edit"></i></a>
+                                    <a href="{{ url('admin_aspect_slider_delete', {'id': item.id}) }}" class="btn btn-small btn-danger"><i class="fa fa-trash"></i></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel">
+                <div class="panel-body">
+                    <div class="panel-title">
+                        {% if thisItem is defined %}
+                            Edit Event
+                        {% else %}
+                            Add new Event
+                        {% endif %}
+
+                    </div>
+                    <br>
+                    {{ form_start(form) }}
+                    {{ form_label(form.start_date) }}
+                    {{ form_widget(form.start_date) }}
+                    {{ form_label(form.end_date) }}
+                    {{ form_widget(form.end_date) }}
+                    {{ form_label(form.location) }}
+                    {{ form_widget(form.location) }}
+                    {{ form_label(form.type) }}
+                    {{ form_widget(form.type) }}
+                    <label for="form_pictures">Pictures</label>
+                    <div id="pic-fields-list"
+                        data-prototype="{{ form_widget(form.pictures.vars.prototype)|e }}"
+                        data-widget-tags="{{ '<div class="form-group"></div>'|e }}"
+                        data-widget-counter="{{ form.children|length }}">
+                        {% for fields in form.pictures %}
+                            <div class="form-group">
+                                {{ form_errors(fields) }}
+                                {{ form_widget(fileds) }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <br>
+                    <button type="button"
+                            class="add-another-collection-widget btn btn-primary btn-block"
+                            data-list-selector="#pic-fields-list">Add another pic</button>
+                    <br>
+                    {{ form_widget(form.submit) }}
+                    {{ form_label(form.submit) }}
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('js/custom/jquery-1.8.3.min.js') }}"></script>
+    <script src="{{ asset('js/custom/add-collection-widget.js') }}"></script>
+{% endblock %}

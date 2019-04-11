@@ -24,8 +24,8 @@
                         {% for item in items %}
                             {% set active = 1 %}
                             <tr>
-                                <td><img style="height:24px" src="../../{{ item.logo }}"></td>
-                                <td>{{ item.title }}</td>
+                                <td><img style="height:24px" src="{{ asset(item.logo) }}"></td>
+                                <td><a href="{{ url('admin_pages_partners_edit', {'id': item.id }) }}">{{ item.title }}</a></td>
                                 <td>{{ item.name }}</td>
                                 <td>
                                     {% if active == 1 %}

@@ -18,17 +18,20 @@ class CategoriesType extends AbstractType
             ->add('name', TextType::class, [
                 'attr' => [
                     'placeholder' => 'Category name'
-                ]
+                ],
+                'label' => 'Category Name'
             ])
             ->add('parent', IntegerType::class, [
                 'attr' => [
-                    'placeholder' => 'Parent category (default 0)'
-                ]
+                    'placeholder' => 'Father category (default 0)'
+                ],
+                'label' => 'Father Category (default 0)'
             ])
             ->add('flag', TextType::class, [
                 'attr' => [
-                    'placeholder' => 'Flag URL'
-                ]
+                    'placeholder' => 'Flag URL (put images in folder flags/)'
+                ],
+                'label' => 'Flag/Image'
             ])
             ->add('submit', SubmitType::class, [
                 'attr' => [

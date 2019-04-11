@@ -7,6 +7,7 @@ use App\Entity\Post;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -35,7 +36,7 @@ class PostType extends AbstractType
             ->add('content', CKEditorType::class, [
                 'autoload' => true,
                 'attr' => [
-                    'rows' => '35'
+                    'rows' => '50'
                 ]
             ])
             ->add('category', EntityType::class, [
@@ -43,7 +44,16 @@ class PostType extends AbstractType
                 'choice_label' => 'name'
             ])
             ->add('image', TextType::class, [
-                'data' => 'media/'
+                'attr' => ['label' => 'Image URL (remeber path media/)'],
+                'data' => 'images/media_placeholder.png',
+                'help' => 'Leave media_placeholder in case of no image'
+            ])
+            ->add('published', CheckboxType::class, [
+                'label' => 'Published',
+                'attr' => [
+                    'checked' => true,
+                    'style' => 'height:500px'
+    ]
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Publish',

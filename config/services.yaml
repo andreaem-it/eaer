@@ -5,6 +5,7 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: 'en'
+    app.path.media: /media
 
 services:
     # default configuration for services in *this* file
@@ -36,3 +37,21 @@ services:
         tags:
             - { name: kernel.event_listener, event: theme.sidebar_setup_menu, method: onSetupMenu }
 
+    my_admin_bundle.show_user_listener:
+        class: App\EventListener\NavbarUserListener
+        tags:
+            - { name: kernel.event_listener, event: theme.navbar_user, method: onShowUser }
+
+    app.notification_list_listener:
+        class: App\EventListener\NotificationListListener
+        tags:
+            - { name: kernel.event_listener, event: theme.notifications, method: onListNotifications }
+
+    App\Service\FileUploader:
+        arguments:
+            $targetDirectory: 'public/media'
+
+    App\EventListener\MediaUploadListener:
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
+            - { name: doctrine.event_listener, event: preUpdate }

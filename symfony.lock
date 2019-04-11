@@ -1,4 +1,7 @@
 {
+    "beberlei/doctrineextensions": {
+        "version": "v1.2.0"
+    },
     "cocur/slugify": {
         "version": "v3.2"
     },
@@ -128,6 +131,12 @@
         "files": [
             "config/packages/admin_lte.yaml"
         ]
+    },
+    "knplabs/knp-components": {
+        "version": "v1.3.10"
+    },
+    "knplabs/knp-paginator-bundle": {
+        "version": "v3.0.0"
     },
     "liip/imagine-bundle": {
         "version": "1.8",
@@ -336,6 +345,9 @@
     },
     "symfony/polyfill-intl-icu": {
         "version": "v1.10.0"
+    },
+    "symfony/polyfill-intl-idn": {
+        "version": "v1.11.0"
     },
     "symfony/polyfill-mbstring": {
         "version": "v1.10.0"

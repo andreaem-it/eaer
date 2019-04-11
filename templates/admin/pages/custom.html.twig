@@ -1,0 +1,78 @@
+{% extends 'admin/dashboard/index.html.twig' %}
+
+{% block title %}EAER Admin{% endblock %}
+
+{% block page_title %}Pages{% endblock %}
+{% block page_subtitle %}Custom{% endblock %}
+
+{% block page_content %}
+    {% block breadcrumb %}{% endblock %}
+    <div class="container-fluid">
+        <div class="col-md-8">
+            <div class="panel">
+                <div class="panel-body">
+                    <table class="table table-responsive table-hover">
+                        <thead>
+                        <tr class="align-middle">
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>Active</th>
+                            <th>Cover Image</th>
+                            <th class="float-right" style="width: 150px; max-width: fit-content"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for item in items %}
+                            {% set active = 1 %}
+                            <tr>
+                                <td>{{ item.id }}</td>
+                                <td>{{ item.pageName }}</td>
+                                <td>
+                                    {% if item.published == 1 %}
+                                        <div class="label label-success">Active</div>
+                                    {% else %}
+                                        <div class="label label-warning">Hidden</div>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if item.hasCover == 1 %}
+                                        <i class="text-success fa fa-check-circle"></i>
+                                    {% else %}
+                                        <i class="text-danger fa fa-times-circle"></i>
+                                    {% endif %}
+                                </td>
+                                <td style="max-width: fit-content">
+                                    {% if item.published == 1 %}
+                                        <a href="{{ url('admin_pages_custom_action', {'action' : 0, 'id' : item.id}) }}" class="btn btn-danger" data-toggle="tooltip" title="Deactivate"><i class="fa fa-times"></i></a>
+                                    {% else %}
+                                        <a href="{{ url('admin_pages_custom_action', {'action' : 1, 'id' : item.id}) }}" class="btn btn-success" data-toggle="tooltip" title="Activate"><i class="fa fa-check"></i></a>
+                                    {% endif %}
+                                    <a href="{{ url('admin_pages_custom_edit', {'id': item.id}) }}" class="btn btn-warning" data-toggle="tooltip" title="Edit"><i class="fa fa-edit"></i></a>
+                                    <a href="{{ url('admin_pages_custom_delete', {'id': item.id}) }}" class="btn btn-danger" data-toggle="tooltip" title="Delete"><i class="fa fa-trash"></i></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel">
+                <div class="panel-body">
+                    {{ form_start(form) }}
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('js/custom/jquery-1.8.3.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.js') }}"></script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+{% endblock %}

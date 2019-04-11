@@ -46,6 +46,12 @@ class Post
      */
     private $slug;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $published;
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -119,6 +125,18 @@ class Post
     public function setSlug(string $slug): self
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getPublished(): ?bool
+    {
+        return $this->published;
+    }
+
+    public function setPublished(?bool $published): self
+    {
+        $this->published = $published;
 
         return $this;
     }

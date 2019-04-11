@@ -1,0 +1,64 @@
+{% extends 'admin/dashboard/index.html.twig' %}
+
+{% block title %}EAER Admin{% endblock %}
+
+{% block page_title %}Aspect{% endblock %}
+{% block page_subtitle %}Slider{% endblock %}
+
+{% block page_content %}
+    {% block breadcrumb %}{% endblock %}
+    <div class="container-fluid">
+        <div class="col-md-8">
+            <div class="panel">
+                <div class="panel-body">
+                    <table class="table table-responsive table-hover">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Slider</th>
+                            <th>URL</th>
+                            <th>Active</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for item in items %}
+                            <tr>
+                                <td style="vertical-align: middle;">{{ item.id }}</td>
+                                <td style="vertical-align: middle;">{{ item.sliderId }}</td>
+                                <td style="vertical-align: middle;">{{ item.url }}</td>
+                                <td style="vertical-align: middle;">{{ item.active }}</td>
+                                <td style="vertical-align: middle;">
+                                    <a href="{{ url('admin_aspect_slider_edit', {'id': item.id}) }}" class="btn btn-small btn-primary"><i class="fa fa-edit"></i></a>
+                                    <a href="{{ url('admin_aspect_slider_delete', {'id': item.id}) }}" class="btn btn-small btn-danger"><i class="fa fa-trash"></i></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel">
+                <div class="panel-body">
+                    <div class="panel-title">
+                        {% if thisItem is defined %}
+                            Edit Slider item
+                        {% else %}
+                            Add new Slider item
+                        {% endif %}
+
+                    </div>
+                    <br>
+                    {% if thisItem.url is defined %}
+                        <img src="{{ asset(thisItem.url) }}" class="img-responsive">
+                        <br>
+                    {% endif %}
+                    {{ form_start(form) }}
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

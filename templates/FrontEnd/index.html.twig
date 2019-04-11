@@ -3,13 +3,42 @@
 
 {% block body %}
     <!-- CIRCLE GRID -->
-    <img src="{{ asset('images/header-pic-1.png') }}" style="width: 100%">
+    {#<img src="{{ asset('images/header-pic-1.png') }}" style="width: 100%">#}
+    <div class="flexslider">
+        <ul class="slides">
+    {% for item in slider %}
+            <li>
+                <img src="{{ asset(item.url) }}" class="img-responsive">
+            </li>
+    {% endfor %}
+        </ul>
+    </div>
+    <section id="call-to-action">
+        <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-6">
+                <h1 class="float-left">Subscribe to our newsletter to stay updated</h1>
+            </div>
+            <div class="col-lg-4">
+                <form id="newsletterForm" class="form-inline">
+                    <div id="subscribe-input" class="form-group">
+                        <div class="input-group">
+                            <input type="email" class="form-control input-lg" id="newsletterEmail" placeholder="e-mail address">
+                            <div class="input-group-addon">
+                                <input type="submit" id="subscribe-button" class="btn btn-secondary btn-lg float-right mt-3" value="Subscribe">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
 
+    </section>
     <section id="outputs" class="page pattern">
         <div class="section white">
             <div class="container title">
                 <h1>Outputs</h1>
-                <p>With the EAER project we will develop a number of outputs, including <span class="highlight">reports on best practices</span><br />  for the employment of people in recovery, an <span class="highlight">e-learning platform</span>, newsletters, etc...</p>
+                <p>With the EAER project we will develop a number of outputs, including <span class="highlight">reports on best practices</span><br />  for the employment of people in recovery, an <span class="highlight">e-learning platform</span>, newsletters, etc.</p>
             </div>
         </div>
         <div class="container">
@@ -17,35 +46,43 @@
                 <div class="col-lg-12 clearfix">
                     <div class="col-lg-3 col-md-6">
                         <div class="services-box">
-                            <div class="icon-container"><div class="pictogram icon-pencil"></div></div>
-                            <div class="services-desc"><p></p></div>
-                            <h3>reports</h3>
+                            <a href="{{ url('coming-soon') }}">
+                                <div class="icon-container"><div class="pictogram icon-pencil"></div></div>
+                                <div class="services-desc"><p>With EAER we will provide documentation about emerging and existing good practices on <strong>employability support programmes for people in recovery</strong> and <strong>how to identify and align appropriate training support and qualifications for them.</strong></p></div>
+                                <h3>reports</h3>
+                            </a>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <div class="services-box">
-                            <div class="icon-container"><div class="pictogram icon-comments"></div></div>
-                            <div class="services-desc"><p></p></div>
-                            <h3>learn</h3>
+                            <a href="{{ url('coming-soon') }}">
+                                <div class="icon-container"><div class="pictogram icon-comments"></div></div>
+                                <div class="services-desc"><p>Our digital platform for employment support services will enable the creation of an international <strong>“Community of Practice”</strong> and the collection and development of OERs in favour of people in recovery.</p></div>
+                                <h3>learn</h3>
+                            </a>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <div class="services-box">
-                            <div class="icon-container"><div class="pictogram icon-wrench"></div></div>
-                            <div class="services-desc"><p></p></div>
-                            <h3>quality</h3>
+                            <a href="{{ url('coming-soon') }}">
+                                <div class="icon-container"><div class="pictogram icon-user"></div></div>
+                                <div class="services-desc"><p>The <strong>Digital Professional Identity (DPI)</strong> for people in recovery will focus on the promotion of the values and the principles of work and entrepreneurship, taking advantage of a <strong>training programme on the professional use of social media.</strong></p></div>
+                                <h3>Digital Professional Identity</h3>
+                            </a>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <div class="services-box">
-                            <div class="icon-container"><div class="pictogram icon-beaker"></div></div>
-                            <div class="services-desc"><p></p></div>
-                            <h3>job opportunities</h3>
+                            <a href="{{ url('coming-soon') }}">
+                                <div class="icon-container"><div class="pictogram icon-bullhorn"></div></div>
+                                <div class="services-desc"><p>Every two months, we will publish an <strong>e-Bulletin with information from the project’s activities</strong>, as well as relevant news and upcoming events in the four countries represented in the project and in Europe.</p></div>
+                                <h3>E-BULLETINS</h3>
+                            </a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-12 contact-button clearfix">
-                    <h2>Would you like to contribute to our project ?</h2>
+                    <h2>Would you like to be involved in our project?</h2>
                     <a class="btn btn-primary btn-lg" href="#contact">Get in Touch</a>
                 </div>
             </div><!-- end .row -->
@@ -58,39 +95,52 @@
 
     <!-- FAVORITE -->
 
-    <section id="partners" class="page pattern">
+    <section id="partners" class="page pattern" style="padding-bottom:5px!important">
         <div class="section white">
             <div class="container title">
 {#                <h1><span class="rotate-fade">FAVORITE: BEST: AWESOME</span> PHOTOS</h1>#}
                 <h1>PARTNERS</h1>
-                <p>The EAER Project is realized by four partner organizations from Scotland, Italy, Portugal and the Netherlands</p>
+                <p>The EAER Project is realised by four partners organisations<br> from the United Kingdom, Italy, Portugal and the Netherlands</p>
             </div>
         </div>
+
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div id="favorite-carusel" class="owl-carousel jerro-carusel-theme">
                         <div class="item">
                             <a href="{{ url('partners', {'partner' : 'sdf'}) }}">
-                                <div class="circle-info" style="margin-left: 10px; width: 270px; height: 270px; background-color: #616f9b">Scottish Drug Forum</div>
+                                <div class="circle-info" style="margin-left: 10px; width: 270px; height: 270px; background-color: #616f9b">
+                                    UNITED KINGDOM <br>
+                                    Scottish Drugs Forum
+                                </div>
                                 <img style="width: 270px;" src="{{ asset('images/partners/home/SDF.png') }}" alt="" />
                             </a>
                         </div>
                         <div class="item">
                             <a href="{{ url('partners', {'partner' : 'dfw2w'}) }}">
-                                <div class="circle-info"  style="margin-left: 10px; width: 270px; height: 270px; background-color: #616f9b">Dutch Foundation of Innovation</div>
+                                <div class="circle-info"  style="margin-left: 10px; width: 270px; height: 270px; background-color: #616f9b">
+                                    THE NETHERLANDS <br>
+                                    Dutch Foundation of Innovation
+                                </div>
                                 <img style="width: 270px;" src="{{ asset('images/partners/home/DFW2W.png') }}" alt="" />
                             </a>
                         </div>
                         <div class="item">
                             <a href="{{ url('partners', {'partner' : 'apdes'}) }}">
-                                <div class="circle-info" style="margin-left: 10px; width: 270px; height: 270px; background-color: #616f9b">APDES</div>
+                                <div class="circle-info" style="margin-left: 10px; width: 270px; height: 270px; background-color: #616f9b">
+                                    PORTUGAL <br>
+                                    Piaget Agency for Development
+                                </div>
                                 <img style="width: 270px;" src="{{ asset('images/partners/home/APDES.png') }}" alt="" />
                             </a>
                         </div>
                         <div class="item">
                             <a href="{{ url('partners', {'partner' : 'la-tenda'}) }}">
-                                <div class="circle-info" style="margin-left: 10px; width: 270px; height: 270px; background-color: #616f9b">La Tenda</div>
+                                <div class="circle-info" style="margin-left: 10px; width: 270px; height: 270px; background-color: #616f9b">
+                                    ITALY <br>
+                                    Comunità la Tenda
+                                </div>
                                 <img style="width: 270px;" src="{{ asset('images/partners/home/LT.png') }}" alt="" />
                             </a>
                         </div>
@@ -98,6 +148,18 @@
                 </div><!-- end .col-lg-12 -->
             </div><!-- end .row -->
         </div><!-- end .container -->
+        <div class="container title" style="padding: 50px 0">
+            <p>Find EAER Network on the map</p>
+        </div>
+        <div class="wide">
+            <div id="jerro-map-canvas"></div>
+            <ul class="map-navigation">
+                <li data-lng="-2.829830" data-lat="54.592055" class="address-button active">UNITED KINGDOM</li>
+                <li data-lng="12.5725266" data-lat="42.9213666" class="address-button">ITALY</li>
+                <li data-lng="5.3606088" data-lat="52.0932955" class="address-button">NETHERLANDS</li>
+                <li data-lng="-10.7400112" data-lat="38.7436214" class="address-button">PORTUGAL</li>
+            </ul><!-- end .map-navigation -->
+        </div><!-- end .wide -->
     </section><!-- end #favorite -->
 
     <!-- SKILLS -->
@@ -111,16 +173,17 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 clearfix">
-                    <h2>Our eLearning platform offers an  <span class="highlight">interactive, multilingual and comprhensive</span> learning environment<br> for social workers and clients in recovery who want <span class="hightlit">improve their skills for employability</span></h2>
-                    <a class="btn btn-primary btn-lg" href="#">Go to the platform</a>
+                    <h2>Our e-Learning platform offers an  <span class="highlight">interactive, multilingual and comprhensive</span> learning environment<br> for social workers and clients in recovery who want <span class="hightlit">improve their skills for employability</span></h2>
+                    <img src="{{ asset('images/platform.png') | imagine_filter('cache') }}" style="width:100%">
+                    <a class="btn btn-primary btn-lg" href="#" style="margin-top: 50px">Go to the platform</a>
                 </div>
             </div><!-- end .row -->
         </div><!-- end .container -->
     </section><!-- end #skills -->
 
-    <!-- TWITTER FEED -->
+    <!-- TWITTER FEED
 
-    <section id="people" class="page pattern">
+    <section id="people" class="page">
         <div class="section white">
             <div class="container title">
                 <h1>Testimonials</h1>
@@ -131,41 +194,45 @@
                 <div class="col-lg-12">
                     <div id="entries-carusel" class="owl-carousel jerro-carusel-theme"></div>
                 </div>
-            </div><!-- end .row -->
-        </div><!-- end .container -->
-    </section><!-- end #people -->
+            </div>
+        </div>
+    </section>-->
 
     <!-- BLOG -->
 
-    <section id="blog" class="page pattern">
-        <div class="section white">
+    <section id="news" class="page pattern" style="padding:30px 0">
+        <div class="section white" style="margin: 20px 0">
             <div class="container title">
-                <h1>News</h1>
-                <p>Recent posts</p>
+                <h1>Latest News</h1>
             </div>
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12 autoplay" style="max-height:550px">
                     {% for post in post_list %}
                         <div class="col-lg-4 col-md-4 col-sm-4">
                             <div class="quick-post">
                                 <div class="date"><span class="day">{{ post.datetime|date("d") }}</span><span>{{ post.datetime|date("M Y") }}</span></div>
-                                <h2><a href="{{ url('blog_article', {'year' : post.datetime|date("Y"), 'month' : post.datetime|date("m") ,'slug' : post.slug }) }}" data-toggle="modal" data-target="#myModal">{{ post.title|truncate(20) }}</a></h2>
+                                <h2><a href="{{ url('blog_article', {'year' : post.datetime|date("Y"), 'month' : post.datetime|date("m") ,'slug' : post.slug }) }}">{{ post.title|truncate(20) }}</a></h2>
                                 <div class="category">{{ post.category }}</div>
                                 <a href="{{ url('blog_article', {'year' : post.datetime|date("Y"), 'month' : post.datetime|date("m") ,'slug' : post.slug }) }}">
                                     <div class="img">
                                         <div class="post-info" style="height: 300px; width: 300px; margin-left: 30px;">
                                             <p style="margin-top: 30%">
-                                                {{ post.content|truncate(100)|raw }}
+                                                {{ post.content|truncate(100)|striptags }}
                                             </p>
                                         </div>
-                                        <img src="{{ asset(post.image) | imagine_filter('my_thumb', {"thumbnail": {"size": [300, 300] }}) }}">
+                                        <img src="{{ asset(post.image) | imagine_filter('thumb', {"thumbnail": {"size": [300, 300] }}) }}" style="margin-left:30px">
                                     </div>
                                 </a>
                             </div><!-- end .quick-post -->
                         </div>
                     {% endfor %}
+                    <style>
+                        .slick-slide {
+                            height: 550px!important;
+                        }
+                    </style>
                 </div><!-- end .col-lg-12 -->
             </div><!-- end .row -->
             <br><br>
@@ -214,42 +281,101 @@
                 <h1>CONTACT</h1>
             </div>
         </div>
-        <div class="wide">
-            <div id="jerro-map-canvas"></div>
-            <ul class="map-navigation">
-                <li data-lng="-1.8281481" data-lat="50.7480687" class="address-button active">UNITED KINGDOM</li>
-                <li data-lng="12.5725266" data-lat="42.9213666" class="address-button">ITALY</li>
-                <li data-lng="5.3606088" data-lat="52.0932955" class="address-button">NETHERLANDS</li>
-                <li data-lng="-10.7400112" data-lat="38.7436214" class="address-button">PORTUGAL</li>
-            </ul><!-- end .map-navigation -->
-        </div><!-- end .wide -->
-        <div class="container">
+
+        <div class="container" style="margin-top: 50px;">
             <div id="jerro-contact-form">
-                <form action="index.php" method="post" id="contact_form">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div id="formFirstName"><input type="text" name="fname" id="fname" placeholder="First name"></div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div id="formLastName"><input type="text" name="lname" id="lname" placeholder="Last name"></div>
-                        </div>
-                    </div><!-- end .row -->
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div id="formEmail"><input type="text" name="email" id="email" placeholder="Email address"></div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div id="formSubject"><input type="text" name="subject" id="subject" placeholder="Subject"></div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div id="formMessage"><textarea name="message" id="message" placeholder="Message"></textarea></div>
-                        </div>
-                    </div><!-- end .row -->
-                    <button type="submit" id="send_message" class="btn btn-primary btn-lg">Send message</button>
-                </form><!-- end #contact_form -->
+                {{ form_start(contact) }}
+                {{ form_errors(contact) }}
+                {% for message in app.flashes('success') %}
+                    <div id="successMessage" class="alert alert-success">
+                        {{ message }}
+                    </div>
+                    <script>
+                        setTimeout(function() {
+                            $('#successMessage').fadeOut('fast');
+                        }, 30000); // <-- time in milliseconds
+                    </script>
+                {% endfor %}
+                <div class="row">
+                    <div class="col-lg-6">
+                        {{ form_widget(contact.firstName) }}
+                    </div>
+                    <div class="col-lg-6">
+                        {{ form_widget(contact.lastName) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        {{ form_widget(contact.email) }}
+                    </div>
+                    <div class="col-lg-12">
+                        {{ form_widget(contact.subject) }}
+                    </div>
+                    <div class="col-lg-12">
+                        {{ form_widget(contact.message) }}
+                    </div>
+                    <div class="col-lg-12">
+{#                        {{ label|default(form_label(contact.tos | raw)) }}#}
+                        {{ form_row(contact.tos|raw) }}
+                        <a href="//www.eaerproject.eu/privacy-policy" style="position: relative;top:-50px;font-weight: 900">Privacy Policy</a><br><br>
+                    </div>
+                </div>
+                {{ form_end(contact) }}
                 <div id="mail_success" class="success-text"><i class="icon-ok"></i> Thank you. We will get in touch with you shortly.</div>
                 <div id="mail_fail" class="error-text"><i class="icon-remove"></i> Sorry, don't know what happened. Try later.</div>
             </div><!-- end #jerro-contact-form -->
         </div><!-- end .container -->
     </section><!-- end #contact -->
+    <style>
+        #call-to-action {
+            padding: 50px 30px;
+            background-color: #b8ce2d;
+        }
+        #call-to-action h1 {
+            color: #FFF;
+        }
+        #call-to-action .input-group-addon {
+            padding: 0;
+        }
+        #call-to-action .btn-lg {
+            padding: 6px 34px;
+        }
+        #call-to-action .form-inline {
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+        #call-to-action .thank-you {
+            color: #FFF;
+        }
+    </style>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('js/custom/jquery.form.min.js') }}"></script>
+    <script>
+        // $("#subscribe-button").click(function (e) {
+        //     e.preventDefault();
+        //     alert($("#newsletterEmail").val());
+        var options = {
+            method: 'POST',
+            url: "{{ url('newsletter-submission-handler') }}",
+            success: function() {
+                $("#subscribe-input").html("<h3 class='thank-you'>Thank You, you will receive our news shortly!</h3>");
+            }
+        };
+            $('#newsletterForm').submit(function () {
+                $(this).ajaxSubmit(options);
+                return false;
+            });
+
+            /*$.ajax({
+
+                url: "{{ url('newsletter-submission-handler') }}",
+                data: {request :  $("#newsletterEmail").val()},
+                success: function (data) {
+                    $("#subscribe-input").html('<h3 class="thank-you">Thank You, you will receive our news shortly!</h3>');
+                    alert(data)
+                }
+            });*/
+        // })
+    </script>
 {% endblock %}

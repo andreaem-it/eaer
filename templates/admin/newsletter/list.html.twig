@@ -1,0 +1,57 @@
+{% extends 'admin/dashboard/index.html.twig' %}
+
+{% block title %}EAER Admin{% endblock %}
+
+{% block page_title %}Newsletter{% endblock %}
+{% block page_subtitle %}List{% endblock %}
+
+{% block page_content %}
+    {% block breadcrumb %}{% endblock %}
+    <div class="container-fluid">
+        <div class="col-md-7">
+            <div class="panel">
+                <div class="panel-body">
+                    <table class="table table-responsive table-hover">
+                        <thead>
+                        <tr>
+                            <th>Date Added</th>
+                            <th>Email</th>
+                            <th>Locale</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for item in items %}
+                            <tr>
+                                <td style="vertical-align: middle;">{{ item.datetime|date("d-m-Y h:i") }}</td>
+                                <td style="vertical-align: middle;">{{ item.email }}</td>
+                                <td style="vertical-align: middle;">{{ item.locale }}</td>
+                                <td style="vertical-align: middle;">
+                                    <a href="" class="btn btn-small btn-primary"><i class="fa fa-edit"></i></a>
+                                    <a href="" class="btn btn-small btn-danger"><i class="fa fa-trash"></i></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="panel">
+                <div class="panel-body">
+                    <div class="panel-title">
+                        Send Newsletter
+                    </div>
+                    <br>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('js/custom/jquery-1.8.3.min.js') }}"></script>
+    <script src="{{ asset('js/custom/add-collection-widget.js') }}"></script>
+{% endblock %}

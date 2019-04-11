@@ -8,9 +8,9 @@ PAGE LOADER
 */
 $(window).load(function() { 
 	$('#preloader').fadeOut(2000);
-	$('body').delay(1000).css({'overflow':'visible'});
+	$('body').delay(1000).css({'overflow':'visible','overflow-x':'hidden'});
 	$('.scroll-arrow').addClass('animated fadeInUp');
-})
+});
 
 /*
 ------------------------------------------------
@@ -238,7 +238,7 @@ http://dev7studios.com/nivo-lightbox
 ------------------------------------------------
 */
 
-$('#favorite-carusel a, #portfolio-grid-1 a').nivoLightbox({
+/*$('#favorite-carusel a, #portfolio-grid-1 a').nivoLightbox({
 	effect: 'fall', // The effect to use when showing the lightbox (fade, fadeScale, slideLeft, slideRight, slideUp, slideDown, fall
 	theme: 'jerro', // The lightbox theme to use
 	keyboardNav: true, // Enable/Disable keyboard navigation (left/right/escape)
@@ -368,7 +368,7 @@ $('.address-button').click(function () {
 
 
 //MAP
-var startPosition = new google.maps.LatLng(-37.818777,144.963225);
+var startPosition = new google.maps.LatLng(54.592055, -2.829830);
 
 $('#jerro-map-canvas').gmap3({
 	map: {
@@ -378,23 +378,27 @@ $('#jerro-map-canvas').gmap3({
 			scrollwheel: false,
 		}
 	},
-	// marker: {
-	// 	// values: [{
-	// 	// 			latLng: [-37.8182,144.964984],
-	// 	// 			options: {  icon: 'images/marker_2.png' },
-	// 	// 			data:'Here is my workshop'
-	// 	// 		}, {
-	// 	// 			latLng: [-37.81887,144.95874],
-	// 	// 			options: {  icon: 'images/marker_1.png' },
-	// 	// 			data:'Here is my office'
-	// 	// 		}, {
-	// 	// 			latLng: [-37.819718,144.972119],
-	// 	// 			options: {  icon: 'images/marker_3.png' },
-	// 	// 			data:'Here you can relax and find inspiration'
-	// 	// 		}],
-	// 	// options: {
-	// 	// 	draggable: false,
-	// 	 },
+	marker: {
+		values: [{
+					latLng: [55.8601202,-4.2580022],
+					options: {  icon: 'images/partner-map-pin.png' },
+					data:'<strong>Scottish Drug Forum</strong><br>91 Mitchell St, Glasgow G1 3LN, United Kingdom'
+				}, {
+					latLng: [51.8370792,4.706841],
+					options: {  icon: 'images/partner-map-pin.png' },
+					data:'DFW2W'
+				}, {
+					latLng: [41.062036,-8.6343607],
+					options: {  icon: 'images/partner-map-pin.png' },
+					data:'APDES'
+				}, {
+					latLng: [42.9495842,12.6884574],
+					options: {  icon: 'images/partner-map-pin.png' },
+					data:'La Tenda'
+				}],
+		options: {
+			draggable: false,
+		 },
 		events:{
 			mouseover: function(marker, event, context){
 			var map = $(this).gmap3("get"),
@@ -418,8 +422,8 @@ $('#jerro-map-canvas').gmap3({
 				}
 			}
 		}
-	});
-// });
+	}
+ });
 
 /*
 ------------------------------------------------
@@ -438,7 +442,7 @@ http://stickyjs.com/
 ------------------------------------------------
 */
 
-$('#main-navigation').sticky({ topSpacing: 0 });
+$('#main-navigation').sticky({ topSpacing: 0 , height: 0});
 
 
 /*
@@ -470,11 +474,11 @@ $('#send_message').click(function(e){
 	/* declare the variables, var error is the variable that we use on the end
 	to determine if there was an error or not */
 	var error = false;
-	var fname = $('#fname').val();
-	var lname = $('#lname').val();
-	var email = $('#email').val();
-	var subject = $('#subject').val();
-	var message = $('#message').val();
+	var fname = $('#form_name').val();
+	var lname = $('#form_lastname').val();
+	var email = $('#form_email').val();
+	var subject = $('#form_subject').val();
+	var message = $('#form_message').val();
 	
 	/* in the next section we do the checking by using VARIABLE.length
 	where VARIABLE is the variable we are checking (like name, email),

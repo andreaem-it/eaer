@@ -1,0 +1,40 @@
+{% extends 'admin/dashboard/index.html.twig' %}
+
+{% block title %}EAER Admin{% endblock %}
+
+{% block page_title %}Contacts{% endblock %}
+{% block page_subtitle %}List{% endblock %}
+
+{% block page_content %}
+    {% block breadcrumb %}{% endblock %}
+    <div class="container-fluid">
+        <div class="col-md-12">
+            <div class="panel">
+                <div class="panel-body">
+                    <table class="table table-responsive table-hover">
+                        <thead>
+                        <tr>
+                            <th>FirstName</th>
+                            <th>LastName</th>
+                            <th>eMail</th>
+                            <th>Subject</th>
+                            <th>Message</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for item in items %}
+                            <tr>
+                                <td style="vertical-align: middle;">{{ item.firstName }}</td>
+                                <td style="vertical-align: middle;">{{ item.lastName }}</td>
+                                <td style="vertical-align: middle;">{{ item.email }}</td>
+                                <td style="vertical-align: middle;">{{ item.subject }}</td>
+                                <td style="vertical-align: middle;">{{ item.message }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

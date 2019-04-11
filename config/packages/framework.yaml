@@ -1,5 +1,5 @@
 framework:
-    translator: ~
+    translator: { fallbacks: ['%locale%'] }
     secret: '%env(APP_SECRET)%'
     default_locale: en
     #csrf_protection: true
@@ -15,3 +15,4 @@ framework:
         log: true
     templating:
         engines: ['twig', 'php']
+    ide: 'phpstorm'

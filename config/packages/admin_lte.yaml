@@ -16,10 +16,12 @@ admin_lte:
 
     knp_menu:
         enable: false
+        main_menu: 'adminlte_main'
+        breadcrumb_menu: true
 
     routes:
         adminlte_welcome: admin
-        adminlte_profile: profile
+        adminlte_profile: adminlte_profile
         adminlte_login: fos_user_security_login
         adminlte_login_check: fos_user_security_check
         adminlte_registration: fos_user_registration_register
@@ -40,7 +42,7 @@ admin_lte:
             removable: false
             removable_title: 'Remove'
             solid: false
-            use_footer: true
+            use_footer: false
         button:
             type: 'primary'
             size: false
