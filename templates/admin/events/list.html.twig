@@ -27,7 +27,7 @@
                                 <td style="vertical-align: middle;">{{ item.id }}</td>
                                 <td style="vertical-align: middle;">{{ item.startDate|date("d-m-Y") }}</td>
                                 <td style="vertical-align: middle;">{{ item.endDate|date("d-m-Y") }}</td>
-                                <td style="vertical-align: middle;">{{ item.pictures }}</td>
+                                <td style="vertical-align: middle;">{% for item in item.pictures %}{{ item }}{% endfor %}</td>
                                 <td style="vertical-align: middle;">
                                     <a href="{{ url('admin_aspect_slider_edit', {'id': item.id}) }}" class="btn btn-small btn-primary"><i class="fa fa-edit"></i></a>
                                     <a href="{{ url('admin_aspect_slider_delete', {'id': item.id}) }}" class="btn btn-small btn-danger"><i class="fa fa-trash"></i></a>

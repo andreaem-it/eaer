@@ -6,11 +6,13 @@ use App\Entity\Categories;
 use App\Entity\Contacts;
 use App\Entity\CustomPages;
 use App\Entity\Events;
+use App\Entity\Homepage;
 use App\Entity\Media;
 use App\Entity\MenuItems;
 use App\Entity\NewsletterItems;
 use App\Entity\Partners;
 use App\Entity\Post;
+use App\Entity\Reports;
 use App\Entity\Slider;
 use App\Entity\User;
 use App\Form\CategoriesType;
@@ -37,7 +39,7 @@ use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Cocur\Slugify\Slugify;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use App\Service\FileUploader;
+
 
 class AdminController extends AbstractController
 {
@@ -91,10 +93,14 @@ class AdminController extends AbstractController
             ]);
         }
 
+        $media = new Finder();
+        $media = $media->ignoreUnreadableDirs()->in('../public/media')->exclude('cache')->files()->notContains('*.php')->sortByModifiedTime();
+
         return $this->render("admin/articles/new.html.twig", [
             'form' => $form->createView(),
-            'page_title' => 'New'
-
+            'page_title' => 'New',
+            'media' => $media,
+            'f' => $this
         ]);
     }
 
@@ -124,14 +130,21 @@ class AdminController extends AbstractController
             return $this->redirectToRoute('admin_articles_edit', [
                 'updated' => 'true',
                 'page_title' => 'Edit',
-                'id' => $post->getId()
+                'id' => $post->getId(),
+                'f' => $this
             ]);
         }
+
+        $media = new Finder();
+        $media = $media->ignoreUnreadableDirs()->in('../public/media')->exclude('cache')->files()->notContains('*.php')->notContains('*.pdf')->sortByModifiedTime();
+
 
         return $this->render("admin/articles/new.html.twig", [
             'form' => $form->createView(),
             'page_title' => 'Edit',
-            'id' => $id
+            'id' => $id,
+            'media' => $media,
+            'f' => $this
         ]);
     }
 
@@ -229,25 +242,40 @@ class AdminController extends AbstractController
 
         $media = new Media();
 
-        $form = $this->createForm(MediaType::class, $media);
+        $form = $this->createFormBuilder($media)
+            ->add('file')
+            ->getForm();
+
         $form->handleRequest($request);
 
-        if($form->isSubmitted()) {
-            //$media->setName($now->format('Y-m-dTH:i:s'));
-            //$file = $form->getData();
-
-            $media->setUpdatedAt(new DateTime("now"));
-            //$media->setName($file->getName());
+        if ($form->isSubmitted()) {
 
             $em = $this->getDoctrine()->getManager();
+
+            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+            $file = $media->getFile();
+            $fileName = $this->generateUniqueFileName().'.png';
+
+            try {
+                $file->move(
+                    '../../public/media',
+                    $fileName
+                );
+            } catch (FileException $e) {
+                // ... handle exception if something happens during file upload
+            }
+
+            $media->setPath('media/');
+            $media->setName($fileName);
+
             $em->persist($media);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('admin_media_show', [
+            $this->redirect($this->generateUrl('admin_media_show', [
                 'filename' => $media->getName()
             ]));
-
         }
+
 
         return $this->render("admin/media/new.html.twig", [
             'page_title' => 'Add',
@@ -427,6 +455,18 @@ class AdminController extends AbstractController
     }
 
     /**
+     * @Route("/admin/pages/homepage", name="admin_pages_homepage")
+     */
+    public function pagesHomepage() {
+
+        $items = $this->getDoctrine()->getRepository(Homepage::class)->findAll();
+
+        return $this->render('admin/pages/homepage.html.twig', [
+            'items' => $items
+        ]);
+    }
+
+    /**
      * @Route("/admin/pages/partners", name="admin_pages_partners")
      */
     public function pagesPartners(Request $request) {
@@ -554,6 +594,28 @@ class AdminController extends AbstractController
     }
 
     /**
+     * @Route("/admin/reports/list", name="admin_reports_list")
+     */
+    public function reportsList() {
+        $reports = $this->getDoctrine()->getRepository(Reports::class)->findAll();
+
+        return $this->render('admin/reports/list.html.twig', [
+            'items' => $reports
+        ]);
+    }
+
+    /**
+     * @Route("/admin/reports/add", name="admin_reports_add")
+     */
+    public function reportsAdd() {
+        $reports = new Reports();
+
+        return $this->render('admin/reports/add.html.twig', [
+            'items' => $reports
+        ]);
+    }
+
+    /**
      * @Route("/admin/contacts/list", name="admin_contacts_list")
      */
     public function contactsList() {
@@ -635,6 +697,10 @@ class AdminController extends AbstractController
 
     public function cleanDir($file) {
         return str_replace('public/', '',$file);
+    }
+
+    public function cleanSubDir($file) {
+        return str_replace('../', '', $file);
     }
 
     /**

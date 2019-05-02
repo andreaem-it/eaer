@@ -9,6 +9,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -43,7 +44,7 @@ class PostType extends AbstractType
                 'class' => Categories::class,
                 'choice_label' => 'name'
             ])
-            ->add('image', TextType::class, [
+            ->add('image', HiddenType::class, [
                 'attr' => ['label' => 'Image URL (remeber path media/)'],
                 'data' => 'images/media_placeholder.png',
                 'help' => 'Leave media_placeholder in case of no image'
@@ -52,7 +53,6 @@ class PostType extends AbstractType
                 'label' => 'Published',
                 'attr' => [
                     'checked' => true,
-                    'style' => 'height:500px'
     ]
             ])
             ->add('submit', SubmitType::class, [

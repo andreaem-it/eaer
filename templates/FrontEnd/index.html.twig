@@ -13,27 +13,7 @@
     {% endfor %}
         </ul>
     </div>
-    <section id="call-to-action">
-        <div class="row">
-            <div class="col-lg-1"></div>
-            <div class="col-lg-6">
-                <h1 class="float-left">Subscribe to our newsletter to stay updated</h1>
-            </div>
-            <div class="col-lg-4">
-                <form id="newsletterForm" class="form-inline">
-                    <div id="subscribe-input" class="form-group">
-                        <div class="input-group">
-                            <input type="email" class="form-control input-lg" id="newsletterEmail" placeholder="e-mail address">
-                            <div class="input-group-addon">
-                                <input type="submit" id="subscribe-button" class="btn btn-secondary btn-lg float-right mt-3" value="Subscribe">
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-    </section>
+    {{ blocks.0.content|raw }}
     <section id="outputs" class="page pattern">
         <div class="section white">
             <div class="container title">
@@ -175,7 +155,7 @@
                 <div class="col-lg-12 clearfix">
                     <h2>Our e-Learning platform offers an  <span class="highlight">interactive, multilingual and comprhensive</span> learning environment<br> for social workers and clients in recovery who want <span class="hightlit">improve their skills for employability</span></h2>
                     <img src="{{ asset('images/platform.png') | imagine_filter('cache') }}" style="width:100%">
-                    <a class="btn btn-primary btn-lg" href="#" style="margin-top: 50px">Go to the platform</a>
+                    <a class="btn btn-primary btn-lg" href="{{ url('coming-soon') }}" style="margin-top: 50px">Go to the platform</a>
                 </div>
             </div><!-- end .row -->
         </div><!-- end .container -->
@@ -243,7 +223,7 @@
     </section><!-- end #blog -->
 
 
-    <!--<section id="portfolio-square" class="page pattern">
+    <section id="portfolio-square" class="page pattern">
         <div class="section white">
             <div class="container title">
                 <h1>EVENTS</h1>
@@ -258,20 +238,29 @@
                 <li data-filter="other" class="button filter-1 anim150">OTHER</li>
                 <li class="break"></li>
             </ul>
-            <ul id="portfolio-grid-1">
-                <li class="mix-1 women"><a href="images/640x640.jpg" title="This is an image title" data-lightbox-gallery="portfolio"><img src="http://placehold.it/270x270" alt=""  /></a><p>Lorem ipsum dolor sit amet</p></li>
-                <li class="mix-1 men"><a href="images/640x640.jpg" title="This is an image title" data-lightbox-gallery="portfolio"><img src="http://placehold.it/270x270" alt="" /></a><p>Lorem ipsum dolor sit amet</p></li>
-                <li class="mix-1 groups"><a href="images/640x640.jpg" title="This is an image title" data-lightbox-gallery="portfolio"><img src="http://placehold.it/270x270" alt="" /></a><p>Lorem ipsum dolor sit amet</p></li>
-                <li class="mix-1 family"><a href="images/640x640.jpg" title="This is an image title" data-lightbox-gallery="portfolio"><img src="http://placehold.it/270x270" alt="" /></a><p>Lorem ipsum dolor sit amet</p></li>
-                <li class="mix-1 groups"><a href="images/640x640.jpg" title="This is an image title" data-lightbox-gallery="portfolio"><img src="http://placehold.it/270x270" alt="" /></a><p>Lorem ipsum dolor sit amet</p></li>
-                <li class="mix-1 men"><a href="images/640x640.jpg" title="This is an image title" data-lightbox-gallery="portfolio"><img src="http://placehold.it/270x270" alt="" /></a><p>Lorem ipsum dolor sit amet</p></li>
-                <li class="mix-1 women"><a href="images/640x640.jpg" title="This is an image title" data-lightbox-gallery="portfolio"><img src="http://placehold.it/270x270" alt="" /></a><p>Lorem ipsum dolor sit amet</p></li>
-                <li class="mix-1 men"><a href="images/640x640.jpg" title="This is an image title" data-lightbox-gallery="portfolio"><img src="http://placehold.it/270x270" alt="" /></a><p>Lorem ipsum dolor sit amet</p></li>
-                <li class="mix-1 groups"><a href="images/640x640.jpg" title="This is an image title" data-lightbox-gallery="portfolio"><img src="http://placehold.it/270x270" alt="" /></a><p>Lorem ipsum dolor sit amet</p></li>
-                <li class="mix-1 women"><a href="images/640x640.jpg" title="This is an image title" data-lightbox-gallery="portfolio"><img src="http://placehold.it/270x270" alt="" /></a><p>Lorem ipsum dolor sit amet</p></li>
-            </ul>
+           <div class="row">
+               <div class="col-sm-8">
+
+                   <ul id="portfolio-grid-1">
+                       {% for event in events %}
+                           <li class="mix-1 {{ event.type }}">
+                               <a href="images/640x640.jpg" style="width:250px" class="img-responsive" title="{{ event.location }}" data-lightbox-gallery="portfolio">
+                                   <img src="{{ event.pictures.0 }}" alt=""/>
+                               </a>
+                               <p>{{ event.location }}</p>
+                           </li>
+                       {% endfor %}
+                   </ul>
+               </div>
+               <div class="col-sm-3">
+                   <div class="panel panel-body">
+                       <div id="calendar"></div>
+                   </div>
+               </div>
+               <siv class="col-sm-1"></siv>
+           </div>
         </div>
-    </section> -->
+    </section>
 
     <!-- CONTACT -->
 
@@ -321,7 +310,7 @@
                     </div>
                 </div>
                 {{ form_end(contact) }}
-                <div id="mail_success" class="success-text"><i class="icon-ok"></i> Thank you. We will get in touch with you shortly.</div>
+                <div id="mail_success" class="success-text"><i class="icon-ok"></i> Your message has been successfully sent. We'll get back to you as soon as possible. Thank you</div>
                 <div id="mail_fail" class="error-text"><i class="icon-remove"></i> Sorry, don't know what happened. Try later.</div>
             </div><!-- end #jerro-contact-form -->
         </div><!-- end .container -->
@@ -350,7 +339,29 @@
     </style>
 {% endblock %}
 {% block javascripts %}
-    <script src="{{ asset('js/custom/jquery.form.min.js') }}"></script>
+    <script>
+        $(document).ready(function(){
+            $("#calendar").simpleCalendar({
+                //Defaults options below
+                //string of months starting from january
+                months: ['january','february','march','april','may','june','july','august','september','october','november','december'], //string of months starting from january
+                days: ['sunday','monday','tuesday','wenesday','thursday','friday','saturday'], //string of days starting from sunday
+                minDate : "YYYY-MM-DD", // minimum date
+                maxDate : "YYYY-MM-DD", // maximum date
+                insertEvent: true, // can insert events
+                displayEvent: true, // display existing event
+                fixedStartDay: true, // Week begin always by monday
+                events: [
+                    {% for e in events %}
+                    '{{ e.startDate|date("Y-m-d") }}',
+                    {% endfor %}
+                ],
+                eventsInfo: ['Event 1', 'Event 2'],
+                insertCallback : function(){} // Callback when an event is added to the calendar
+            });
+        });
+
+    </script>
     <script>
         // $("#subscribe-button").click(function (e) {
         //     e.preventDefault();

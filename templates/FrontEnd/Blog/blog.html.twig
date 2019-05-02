@@ -10,17 +10,23 @@
                     <h1>News</h1>
                 </div>
                 <ul class="portfolio-navigation-1">
-                    <li data-filter="all" data-role="button" class="button filter-1 anim150">All</li>
+                    <a class="btn btn-success btn-md anim150" style="margin:0 10px;padding: 12px 18px;">All</a>
                     {% for category in category_list %}
-                        <li data-filter="{{ category.name }}" data-tole="button" class="button filter-1 anim150">
+                        <a class="flag btn btn-success" href="{{ url("blog_category", {'category': category.slug}) }}" style="margin:0 10px">
                             <img src="{{ asset('flags/' ~ category.flag) }}" style="width:32px">
-                        </li>
+                        </a>
                     {% endfor %}
-
+                    {% block javascripts %}
+                    <script>
+                        $('.flag').bind('mouseenter', function(){
+                            $(this).effect("bounce", { times:3 }, 300);
+                        });
+                    </script>
+                    {% endblock %}
                     <li class="break"></li>
                 </ul>
                 <nav class="breadcrumb text-left">
-                    <a href="{{ url('front_end') }}">Home</a> / Blog
+                    <a href="{{ url('front_end') }}">Home</a> / Blog {% if app.request.attributes.get('_route') == 'blog_category' %}/ {{ category }}{% endif %}
                 </nav>
                 <br>
                 <div class="row">

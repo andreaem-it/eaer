@@ -7,6 +7,64 @@
 
 {% block page_content %}
     {% block breadcrumb %}{% endblock %}
+
+    <div id="mediaModal" class="modal fade modal-xl" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document" style="width:95%">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Media List</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <!-- add extra container element for Masonry -->
+                        <div class="grid">
+                            <!-- add sizing element for columnWidth -->
+                            <div class="grid-sizer col-xs-2"></div>
+                            <!-- items use Bootstrap .col- classes -->
+                            {% for file in media %}
+                                <div class="grid-item col-xs-2">
+                                    <!-- wrap item content in its own element -->
+                                    <div class="grid-item-content">
+                                        <a class="noClick" onclick="mediaClick('{{ f.cleanSubDir(f.cleanDir(file)) }}')">
+                                            <div style="width:200px;height:200px;background-image: url('../../{{ f.cleanDir(file)  }}');background-position: center; background-size: cover"></div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <br>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+                    <script src="https://unpkg.com/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"></script>
+
+                    <script>
+                        $('.grid').masonry({
+                            itemSelector: '.grid-item', // use a separate class for itemSelector, other than .col-
+                            columnWidth: '.grid-sizer',
+                            percentPosition: false
+                        });
+                        $(document).ready(function () {
+                            $('.grid-item').css('position','relative')
+                        });
+                        function mediaClick(uri) {
+                            $('#post_image').val(uri);
+                            $('#mediaModal').modal('toggle');
+                            $('#previewImage').attr('src','../../../' + uri);
+                        }
+                        $('.noClick').click(function (e) {
+                            e.preventDefault();
+                        })
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container-fluid">
         <div class="row">
             {{ form_start(form) }}
@@ -26,8 +84,7 @@
                         {% if page_title == "Edit" %}
                             <a href="{{ url('admin_articles_delete', {'id': id}) }}" class="btn btn-danger btn-block">Delete</a>
                         {% endif %}
-                        <br>
-                        {{ form_widget(form.published) }}
+
                         <br>
                         {{ form_label(form.datetime) }}
                         {{ form_widget(form.datetime) }}
@@ -36,8 +93,13 @@
                         {{ form_widget(form.category) }}
                         <br>
                         {{ form_label(form.image) }}
+                        <img id="previewImage" class="img-responsive" src="{{ asset('images/media_placeholder.png') }}">
                         {{ form_widget(form.image) }}
-                        {{ form_help (form.image)}}
+                        <button id="imgSelection" type="button" class="btn btn-default btn-block" data-toggle="modal" data-target="#mediaModal">
+                            <i class="fa fa-plus"></i> Select Image
+                        </button>
+                        <br>
+                        {{ form_row(form.published) }}
                         <br>
                     </div>
                 </div>
@@ -49,10 +111,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
     <script>
         $(document).ready(function() {
             $(".datetimepicker").datetimepicker({ format : "YYYY-MM-DDTHH:mm" });
-            $(".datetimepicker").val(new Date().toISOString());
         });
 
     </script>

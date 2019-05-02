@@ -134,7 +134,7 @@ https://github.com/sonnyt/Tweetie
 
 $('#entries-carusel').twittie({
 	dateFormat: '%b / %d / %Y',
-	template: '<div class="item entry tweet"><h2 class="avatar">{{avatar}}</h2><blockquote>{{tweet}}</<blockquote><div class="date">{{date}}</div></div>',
+	template: '<div class="item entry tweet"><h2 class="avatar">{{avatar}}</h2><blockquote>{{tweet}}</blockquote><div class="date">{{date}}</div></div>',
 	count: 3
 });
 
@@ -386,15 +386,21 @@ $('#jerro-map-canvas').gmap3({
 				}, {
 					latLng: [51.8370792,4.706841],
 					options: {  icon: 'images/partner-map-pin.png' },
-					data:'DFW2W'
+					data:'<strong>DFW2W</strong><br>Ligusterhof 21, 3356 LD Papendrecht, Netherlands'
 				}, {
 					latLng: [41.062036,-8.6343607],
 					options: {  icon: 'images/partner-map-pin.png' },
-					data:'APDES'
+					data:'<strong>APDES</strong><br>Alameda Jean Piaget nº 100, 4411-801 Vila Nova de Gaia, Portougal'
 				}, {
 					latLng: [42.9495842,12.6884574],
 					options: {  icon: 'images/partner-map-pin.png' },
-					data:'La Tenda'
+					data:'<strong>La Tenda</strong><br>Via Santo Pietro, 1, 06034 Foligno PG, Italy'
+				},
+		// Network
+				{
+					latLng: [42.918847,12.7216963],
+					options: { icon: 'images/network-map-pin.png'},
+					data: '<strong>EGInA</strong><br>Via delle Industrie, 9, 06034 Foligno PG, Italy'
 				}],
 		options: {
 			draggable: false,

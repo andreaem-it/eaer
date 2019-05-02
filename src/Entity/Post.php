@@ -52,6 +52,11 @@ class Post
     private $published;
 
 
+    public function __construct()
+    {
+        $this->datetime = new \DateTime();
+    }
+
     public function getId(): ?int
     {
         return $this->id;

@@ -3,7 +3,7 @@
 {% block title %}EAER Admin{% endblock %}
 
 {% block page_title %}Pages{% endblock %}
-{% block page_subtitle %}Custom{% endblock %}
+{% block page_subtitle %}Homepage{% endblock %}
 
 {% block page_content %}
     {% block breadcrumb %}{% endblock %}
@@ -14,10 +14,10 @@
                     <table class="table table-responsive table-hover">
                         <thead>
                         <tr class="align-middle">
-                            <th>ID</th>
-                            <th>Title</th>
+                            <th>Position</th>
+                            <th>Block Title</th>
                             <th>Active</th>
-                            <th>Cover Image</th>
+                            <th>Author</th>
                             <th class="float-right" style="width: 150px; max-width: fit-content"></th>
                         </tr>
                         </thead>
@@ -25,24 +25,18 @@
                         {% for item in items %}
                             {% set active = 1 %}
                             <tr>
-                                <td>{{ item.id }}</td>
-                                <td>{{ item.pageName }}</td>
+                                <td>{{ item.position }}</td>
+                                <td>{{ item.blockName }}</td>
                                 <td>
-                                    {% if item.published == 1 %}
+                                    {% if item.active == 1 %}
                                         <div class="label label-success">Active</div>
                                     {% else %}
                                         <div class="label label-warning">Hidden</div>
                                     {% endif %}
                                 </td>
-                                <td>
-                                    {% if item.hasCover == 1 %}
-                                        <i class="text-success fa fa-check-circle" data-toggle="tooltip" data-html="true" title="<img src='{{ asset(item.coverImage) }}' class='img-responsive'>" data-placement="bottom"></i>
-                                    {% else %}
-                                        <i class="text-danger fa fa-times-circle"></i>
-                                    {% endif %}
-                                </td>
+                                <td>{{ item.author }}</td>
                                 <td style="max-width: fit-content">
-                                    {% if item.published == 1 %}
+                                    {% if item.active == 1 %}
                                         <a href="{{ url('admin_pages_custom_action', {'action' : 0, 'id' : item.id}) }}" class="btn btn-danger" data-toggle="tooltip" title="Deactivate"><i class="fa fa-times"></i></a>
                                     {% else %}
                                         <a href="{{ url('admin_pages_custom_action', {'action' : 1, 'id' : item.id}) }}" class="btn btn-success" data-toggle="tooltip" title="Activate"><i class="fa fa-check"></i></a>
@@ -60,8 +54,7 @@
         <div class="col-md-4">
             <div class="panel">
                 <div class="panel-body">
-                    {{ form_start(form) }}
-                    {{ form_end(form) }}
+
                 </div>
             </div>
         </div>

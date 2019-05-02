@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Contacts;
 use App\Entity\CustomPages;
+use App\Entity\Events;
+use App\Entity\Homepage;
 use App\Entity\NewsletterItems;
 use App\Entity\Post;
 use App\Entity\Slider;
@@ -39,7 +41,9 @@ class FrontEndController extends AbstractController
         }
 
         return $this->render('FrontEnd/index.html.twig', [
+            'blocks' => $this->getDoctrine()->getRepository(Homepage::class)->findAll(),
             'post_list' => $this->getDoctrine()->getRepository(Post::class)->findBy([],['datetime' => 'DESC'],12),
+            'events' => $this->getDoctrine()->getRepository(Events::class)->findAll(),
             'contact' => $contact->createView(),
             'slider' => $this->getDoctrine()->getRepository(Slider::class)->findBy(['active' => true])
         ]);

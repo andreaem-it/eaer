@@ -29,6 +29,8 @@ class MenuBuilderListener
 
         $pages = new MenuItemModel('Pages', 'Pages', 'admin', [], 'fa fa-file');
 
+        $reports = new MenuItemModel('Reports', 'Reports', 'admin', [], 'fa fa-file-alt');
+
         $contacts = new MenuItemModel('Contacts', 'Contacts', 'admin', [], 'fa fa-envelope' );
 
         $events = new MenuItemModel('Events', 'Events', 'admin', [], 'fa fa-calendar');
@@ -51,8 +53,13 @@ class MenuBuilderListener
             ->addChild(new MenuItemModel('Slider', 'Slider', 'admin_aspect_slider' , [], 'fa fa-puzzle-piece'));
 
         $pages
+            ->addChild(new MenuItemModel('Pages_Homepage', 'Homepage', 'admin_pages_homepage',[], 'fa fa-file'))
             ->addChild(new MenuItemModel('Pages_Custom', 'Custom', 'admin_pages_custom', [], 'fa fa-list-ul'))
             ->addChild(new MenuItemModel('Pages_Partners', 'Partners', 'admin_pages_partners', [], 'fa fa-hands-helping'));
+
+        $reports
+            ->addChild(new MenuItemModel('Reports_List', 'List','admin_reports_list', [], 'fa fa-list'))
+            ->addChild(new MenuItemModel('Reports_New', 'New','admin_reports_add', [], 'fa fa-plus-circle'));
 
         $contacts
             ->addChild(new MenuItemModel('Contacts_List', 'List', 'admin_contacts_list', [], 'fa fa-list-ul'));
@@ -67,7 +74,7 @@ class MenuBuilderListener
             ->addChild(new MenuItemModel('Settings_Users', 'Users', 'admin_settings_users', [], 'fa fa-users'))
             ->addChild(new MenuItemModel('Settings_System', 'System', 'admin_settings_system', [], 'fa fa-cog'));
 
-        return $this->activateByRoute($request->get('_route'), [$dash,$blog,$pages,$media,$aspect,$contacts,$events,$newsletter,$settings]);
+        return $this->activateByRoute($request->get('_route'), [$dash,$blog,$pages,$reports,$media,$aspect,$contacts,$events,$newsletter,$settings]);
     }
 
     /**
